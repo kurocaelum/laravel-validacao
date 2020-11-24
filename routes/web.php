@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\ClienteControlador;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,10 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-Route::get('/novocliente', function () {
-    return view('novocliente');
-});
+Route::get('/', [ClienteControlador::class, 'index'])->name('indexCliente');
+Route::get('/novocliente', [ClienteControlador::class, 'create'])->name('createCliente');
+Route::post('/cliente', [ClienteControlador::class, 'store'])->name('storeCliente');
